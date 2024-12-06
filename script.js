@@ -30,7 +30,7 @@ function populateBlogPosts(directoryStructure) {
 }
 
 // Example usage:
-const directoryPath = '/your/directory/path'; // Replace with your actual directory path
+const directoryPath = '/'; // Replace with your actual directory path
 fetchDirectoryStructure(directoryPath)
   .then(directoryStructure => {
     populateBlogPosts(directoryStructure);
