@@ -10,50 +10,8 @@
 <header>
     <h1>My Blog</h1>
 </header>
-<main>
-    <ul>
-        <?php
-            // Assuming PHP is being used for server-side processing
-            $directory = '/home'; // Replace with your desired directory
-
-            // Get all directories and files in the specified directory
-            $files = scandir($directory);
-
-            // Iterate through the files and directories, filtering for the desired pattern
-            foreach ($files as $file) {
-                if ($file != '.' && $file != '..') {
-                    $filePath = $directory . '/' . $file;
-
-                    // Check if it's a directory matching the year format
-                    if (is_dir($filePath) && preg_match('/^\d{4}$/', $file)) {
-                        $year = $file;
-
-                        // Iterate through subdirectories and files within the year directory
-                        foreach (scandir($filePath) as $month) {
-                            if ($month != '.' && $month != '..') {
-                                $monthPath = $filePath . '/' . $month;
-
-                                if (is_dir($monthPath) && preg_match('/^\d{6}$/', $month)) {
-                                    $monthYear = $month;
-
-                                    // Iterate through files within the month directory
-                                    foreach (scandir($monthPath) as $dayFile) {
-                                        if (preg_match('/^\d{8}-\d+\..*\.html$/', $dayFile)) {
-                                            $date = substr($dayFile, 0, 8);
-                                            $title = substr($dayFile, 9, -5);
-                                            $url = $filePath . '/' . $month . '/' . $dayFile;
-
-                                            echo '<li><a href="' . $url . '">' . $date . ' - ' . $title . '</a></li>';
-        }
-        }
-        }
-        }
-        }
-        }
-        }
-        }
-        ?>
-    </ul>
+<main id="blog-posts">
 </main>
+<script src="script.js"></script>
 </body>
 </html>
